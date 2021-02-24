@@ -11,6 +11,24 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.app {
+    height: 100vh;
+    width: 100vw;
+}
+
+.header {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;

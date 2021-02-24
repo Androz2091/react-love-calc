@@ -1,8 +1,10 @@
-import './App.css';
+import Form from './components/Form';
 
-function App() {
+const App = () => {
     return (
-        <h1>Hello</h1>
+        <div className="app bg-red-400">
+            <Form />
+        </div>
     );
 }
 
