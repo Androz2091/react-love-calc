@@ -12,7 +12,7 @@ const Form = () => {
         const numbers = MD5(string).toString().split('').filter((c) => !isNaN(c));
         const baseResult = parseInt(numbers[0] + numbers[1]);
         return baseResult + 30 > 100 ?
-            (baseResult + 15 > 100 ? baseResult : baseResult + 15)
+            baseResult
             : baseResult + 30;
     }
 
