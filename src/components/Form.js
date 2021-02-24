@@ -8,8 +8,7 @@ const Form = () => {
 
     const calculateLove = (name1, name2) => {
         if (!firstName || !secondName) return '';
-        const string = [name1, name2].sort((a, b) => a.localeCompare(b)).join('');
-        console.log(MD5(string).toString());
+        const string = [name1.trim(), name2.trim()].sort((a, b) => a.localeCompare(b)).join('');
         const numbers = MD5(string).toString().split('').filter((c) => !isNaN(c));
         const baseResult = parseInt(numbers[0] + numbers[1]);
         return baseResult + 30 > 100 ?
