@@ -17,7 +17,7 @@ const Form = () => {
     }
 
     return (
-        <div className="form space-x-2 text-white">
+        <div className="form space-x-2 text-white flex-col md:flex-row">
             <input
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
