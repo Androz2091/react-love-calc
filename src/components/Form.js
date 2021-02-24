@@ -1,3 +1,4 @@
+import MD5 from 'crypto-js/md5';
 import { useState } from 'react';
 
 const Form = () => {
@@ -5,39 +6,35 @@ const Form = () => {
     const [firstName, setFirstName] = useState('');
     const [secondName, setSecondName] = useState('');
 
-    const getNumbers = (string) => {
-        const occurences = [];
-        for (let character in string.split('')) {
-            const charOccurences = string.split('').filter((e) => e === character).length;
-            occurences.push(charOccurences);
-        }
-        return occurences;
-    }
-
-    const calculateLove = () => {
-        const string = firstName + secondName;
-        let numbers = getNumbers(string);
-        while (numbers.length > 2) {
-            numbers = numbers[0] + numbers[numbers.length - 1];
-        }
-        return numbers.join('');
+    const calculateLove = (name1, name2) => {
+        if (!firstName || !secondName) return '';
+        const string = [name1, name2].sort((a, b) => a.localeCompare(b)).join('');
+        console.log(MD5(string).toString());
+        const numbers = MD5(string).toString().split('').filter((c) => !isNaN(c));
+        const baseResult = parseInt(numbers[0] + numbers[1]);
+        return baseResult + 30 > 100 ?
+            (baseResult + 15 > 100 ? baseResult : baseResult + 15)
+            : baseResult + 30;
     }
 
     return (
-        <div className="form space-x-2">
+        <div className="form space-x-2 text-white">
             <input
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 placeholder="Nom 1"
                 className="p-2 border-pink rounded focus:outline-none"
             />
+            <p>+</p>
             <input
                 value={secondName}
                 onChange={(e) => setSecondName(e.target.value)}
                 placeholder="Nom 2"
                 className="p-2 border-pink rounded focus:outline-none"
             />
-            <h2>{ calculateLove() }</h2>
+            <p> =</p>
+            <h2 className="text-2xl">{(firstName && secondName) ? calculateLove(firstName, secondName) : '... '}%</h2>
+            <p>d'amour</p> 
         </div>
     )
 }
