@@ -22,6 +22,7 @@ body {
 
 .form {
     height: 400px;
+    flex-wrap: wrap;
     display: flex;
     align-items: center;
     justify-content: center;

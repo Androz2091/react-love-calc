@@ -1,20 +1,44 @@
 import MD5 from 'crypto-js/md5';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Form = () => {
 
     const [firstName, setFirstName] = useState('');
     const [secondName, setSecondName] = useState('');
 
-    const calculateLove = (name1, name2) => {
-        if (!name1 || !name2) return '';
-        const string = [name1.toLowerCase().trim(), name2.toLowerCase().trim()].sort((a, b) => b.localeCompare(a)).join('');
+    const [copied, setCopied] = useState('');
+
+    useEffect(() => {
+        if (copied) {
+            setTimeout(() => {
+                setCopied(false);
+            }, 1000);
+        }
+    }, [copied])
+
+    const calculateLove = () => {
+        if (!firstName || !secondName) return '';
+        const string = [firstName.toLowerCase().trim(), secondName.toLowerCase().trim()].sort((a, b) => b.localeCompare(a)).join('');
         const numbers = MD5(string).toString().split('').filter((c) => !isNaN(c)).reverse();
         const baseResult = parseInt(numbers[2] + numbers[3]) === 99 ? parseInt(numbers[0]) > 4 ? 100 : 99 : parseInt(numbers[2] + numbers[3]);
         return baseResult === 91 ? 98 : baseResult;
     }
 
+    const copy = () => {
+        const content = `Hey, ${firstName} et ${secondName} sont compatibles à ${calculateLove()}%! Calcule ton pourcentage sur https://love-calc.androz2091.fr!`;
+        const copyInput = document.querySelector('#copy-input');
+        copyInput.setAttribute('type', 'text')
+        copyInput.setAttribute('value', content);
+        copyInput.select()
+        document.execCommand('copy');
+        copyInput.setAttribute('type', 'hidden')
+        window.getSelection().removeAllRanges()
+        setCopied(true);
+    }
+
     return (
+        <>
+        <input type="hidden" id="copy-input"></input>
         <div className="form space-x-2 text-white flex-col md:flex-row text-2xl">
             <input
                 value={firstName}
@@ -37,6 +61,10 @@ const Form = () => {
                 </path>
             </svg>
         </div>
+        <div style={{ textAlign: 'center', height: '300px', color: 'white' }} className="mt-5 md:mt-0">
+            <button className="p-5 bg-red-700 rounded text-2xl focus:outline-none" onClick={copy} style={{ backgroundColor: copied ? 'green' : '#B91C1C' }}>{ copied ? 'Score copié!' : 'Partagez votre score!' }</button>
+        </div>
+        </>
     )
 }
 
