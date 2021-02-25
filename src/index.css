@@ -2,28 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+    font-family: 'Architects Daughter', cursive;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 .app {
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    min-width: 100vw;
 }
 
 .header {
-    margin-top: 10px;
     text-align: center;
 }
 
 .form {
-    width: 100%;
-    height: 100%;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,4 +34,10 @@ code {
 
 input {
     color: black;
+}
+
+.heart {
+    display: block;
+    width: 70px;
+    height: 70px;
 }
