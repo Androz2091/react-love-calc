@@ -8,7 +8,7 @@ const Form = () => {
 
     const calculateLove = (name1, name2) => {
         if (!firstName || !secondName) return '';
-        const string = [name1.trim(), name2.trim()].sort((a, b) => b.localeCompare(a)).join('');
+        const string = [name1.toLowerCase().trim(), name2.toLowerCase().trim()].sort((a, b) => b.localeCompare(a)).join('');
         const numbers = MD5(string).toString().split('').filter((c) => !isNaN(c)).reverse();
         const baseResult = parseInt(numbers[2] + numbers[3]) === 99 ? parseInt(numbers[0]) > 4 ? 100 : 99 : parseInt(numbers[2] + numbers[3]);
         return baseResult === 91 ? 98 : baseResult;
