@@ -62,7 +62,7 @@ const Form = () => {
             </svg>
         </div>
         <div style={{ textAlign: 'center', height: '300px', color: 'white' }} className="mt-5 md:mt-0">
-            <button className="p-5 bg-red-700 rounded text-2xl focus:outline-none" onClick={copy} style={{ backgroundColor: copied ? 'green' : '#B91C1C' }}>{ copied ? 'Score copié!' : 'Partagez votre score!' }</button>
+            <button className="p-5 bg-red-700 rounded text-2xl focus:outline-none" onClick={copy} style={{ backgroundColor: copied ? 'green' : '#B91C1C' }} disabled={copied}>{ copied ? 'Score copié!' : 'Partagez votre score!' }</button>
         </div>
         </>
     )
