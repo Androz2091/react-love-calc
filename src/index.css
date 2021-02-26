@@ -21,8 +21,16 @@ body {
 }
 
 .form {
-    height: 400px;
-    flex-wrap: wrap;
+    margin-top: 80px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result {
+    color: white;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
