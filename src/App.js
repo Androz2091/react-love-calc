@@ -7,7 +7,7 @@ const App = () => {
     const percent = useStoreState((state) => state.love.percent);
     
     return (
-        <div className="app" style={{ backgroundImage: percent === 100 ? 'url(https://data.photofunky.net/output/image/8/8/1/5/881593/photofunky.gif)' : '', backgroundColor: percent !== 100 ? percent === 0 ? '#9CA3AF' : '#F87171' : 'red' }}>
+        <div className="app" style={{ backgroundImage: percent === 100 ? 'url(https://love-calc.androz2091.fr/bg-heart.gif)' : '', backgroundColor: percent !== 100 ? percent === 0 ? '#9CA3AF' : '#F87171' : 'red' }}>
             <Header />
             <Form />
         </div>
